@@ -1,32 +1,50 @@
 Shadowsocks-go
+
 wget --no-check-certificate -O shadowsocks-go.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-go.sh
+
 chmod +x shadowsocks-go.sh
+
 ./shadowsocks-go.sh 2>&1 | tee shadowsocks-go.log
 
 卸载：./shadowsocks-go.sh uninstall
+
 启动：/etc/init.d/shadowsocks start
+
 停止：/etc/init.d/shadowsocks stop
+
 重启：/etc/init.d/shadowsocks restart
+
 状态：/etc/init.d/shadowsocks status
+
 -------------------------------------------------
 CentOS下shadowsocks-libev
+
 wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-libev.sh
+
 chmod +x shadowsocks-libev.sh
+
 ./shadowsocks-libev.sh 2>&1 | tee shadowsocks-libev.log
 
-卸载方法：
-使用root用户登录Xshell，运行以下命令
-./shadowsocks-libev.sh uninstall
+卸载：root-Xshell ./shadowsocks-libev.sh uninstall
+
 启动：/etc/init.d/shadowsocks start
+
 停止：/etc/init.d/shadowsocks stop
+
 重启：/etc/init.d/shadowsocks restart
+
 查看状态：/etc/init.d/shadowsocks status
+
 -----------------------------------------------------
 OpenVZ 平台 Google BBR
 https://blog.kuoruan.com/116.html
+
 wget https://raw.githubusercontent.com/kuoruan/shell-scripts/master/ovz-bbr/ovz-bbr-installer.sh
+
 chmod +x ovz-bbr-installer.sh
+
 ./ovz-bbr-installer.sh
+
 需要配置的有如下几个选项：
 1.需要加速的端口，即的 SS 端口。加速开启之后，流量会先经过 BBR 处理，之后再发送给后端的 SS。
 2.可能需要配置 “公网接口名称”，即你服务器上具有公网 IP 的接口名称。搬瓦工 OpenVZ 上默认都是 venet0，但是有朋友可能需要安装在其他服务器上，
