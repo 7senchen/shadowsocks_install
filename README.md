@@ -1,4 +1,4 @@
-Shadowsocks-go
+### Shadowsocks-go
 
 wget --no-check-certificate -O shadowsocks-go.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-go.sh
 
@@ -17,7 +17,7 @@ chmod +x shadowsocks-go.sh
 状态：/etc/init.d/shadowsocks status
 
 -------------------------------------------------
-CentOS下shadowsocks-libev
+### CentOS下shadowsocks-libev
 
 wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-libev.sh
 
@@ -36,7 +36,7 @@ chmod +x shadowsocks-libev.sh
 查看状态：/etc/init.d/shadowsocks status
 
 -----------------------------------------------------
-Shadowsocks （四合一）
+### Shadowsocks （四合一）
 
 系统支持：CentOS 6+，Debian 7+，Ubuntu 12+
 
@@ -114,7 +114,7 @@ Shadowsocks-libev 版：
 /etc/shadowsocks-libev/config.json
 
 ---------------------------------------------------------------
-OpenVZ 平台 Google BBR
+### OpenVZ 平台 Google BBR
 https://blog.kuoruan.com/116.html
 
 wget https://raw.githubusercontent.com/kuoruan/shell-scripts/master/ovz-bbr/ovz-bbr-installer.sh
@@ -158,7 +158,7 @@ service haproxy-lkl {start|stop|restart}
 判断 bbr 是否正常启动可以尝试 ping 10.0.0.2，如果能通，说明 bbr 已经启动。
 
 ------------------------------------------
-一键安装最新内核并开启 BBR 脚本
+### 一键安装最新内核并开启 BBR 脚本
 
 https://teddysun.com/489.html
 
@@ -180,7 +180,37 @@ chmod +x bbr.sh
 
 ./bbr.sh
 
-安装完成后，脚本会提示需要重启 VPS，输入 y 并回车后重启。
+安装完成后，脚本会提示需要重启 VPS，
+**不重启
+awk -F\' '$1=="menuentry " {print i++ " : " $2}' /boot/grub2/grub.cfg
+第一步是确认新内核的顺序，执行后会出现目前系统上所有已经安装的内核版本。
+第二步是适用你想启用的内核。
+grub2-set-default 数字
+此处的数字，就是第一步返回的结果，输入你想要适用的内核版本的序号。
+第三步是确认。
+grub2-editenv list
+看看返回的结果是不是你想要的内核版本。
+最后一步，重启系统reboot。
+
+uname -r
+查看内核版本为最新版
+
+sysctl net.ipv4.tcp_available_congestion_control
+返回值一般为：
+net.ipv4.tcp_available_congestion_control = bbr cubic reno
+或者为：
+net.ipv4.tcp_available_congestion_control = reno cubic bbr
+
+sysctl net.ipv4.tcp_congestion_control
+返回值一般为：
+net.ipv4.tcp_congestion_control = bbr
+
+sysctl net.core.default_qdisc
+返回值一般为：
+net.core.default_qdisc = fq
+
+lsmod | grep bbr
+返回值有 tcp_bbr 模块即说明 bbr 已启动。
 
 重启完成后，进入 VPS，验证一下是否成功安装最新内核并开启 TCP BBR，输入以下命令：
 
