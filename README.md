@@ -3,7 +3,7 @@ wget --no-check-certificate -O shadowsocks-go.sh https://raw.githubusercontent.c
 chmod +x shadowsocks-go.sh  
 ./shadowsocks-go.sh 2>&1 | tee shadowsocks-go.log  
 卸载：./shadowsocks-go.sh uninstall  
-启动：/etc/init.d/shadowsocks start
+启动：/etc/init.d/shadowsocks start  
 停止：/etc/init.d/shadowsocks stop  
 重启：/etc/init.d/shadowsocks restart  
 状态：/etc/init.d/shadowsocks status  
