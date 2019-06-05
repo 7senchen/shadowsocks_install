@@ -1,3 +1,23 @@
+### shadowsocks-libev  
+#### Debian & Ubuntu
+sudo apt update  
+sudo apt install shadowsocks-libev  
+
+If you are using CentOS 7, you need to install these prequirement to build from source code:  
+yum install epel-release -y  
+yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto c-ares-devel libev-devel libsodium-devel mbedtls-devel -y  
+su -c 'dnf copr enable librehat/shadowsocks'  
+
+su -c 'dnf update'  
+su -c 'dnf install shadowsocks-libev'  
+
+or  
+
+su -c 'yum update'  
+su -c 'yum install shadowsocks-libev'  
+
+---------------------------------------
+
 ### Shadowsocks-go  
 wget --no-check-certificate -O shadowsocks-go.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-go.sh  
 chmod +x shadowsocks-go.sh  
