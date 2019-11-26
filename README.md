@@ -59,7 +59,7 @@ chmod +x shadowsocks-libev.sh
 备注：脚本默认创建单用户配置文件，如需配置多用户，请手动修改相应的配置文件后重启即可。  
 
 使用root用户登录，运行以下命令：  
-wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/AppSo/shadowsocks_install/master/shadowsocks-all.sh  
+wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh  
 chmod +x shadowsocks-all.sh   
 ./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log  
 
